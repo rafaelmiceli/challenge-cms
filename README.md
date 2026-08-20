@@ -1,4 +1,4 @@
-# Proyecto Laravel
+# Challenge CMS
 
 Guía para clonar, configurar y ejecutar este proyecto Laravel en un entorno local.
 
@@ -25,8 +25,8 @@ git --version
 Clona el proyecto y entra en la carpeta:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_PROYECTO>
+git clone https://github.com/rafaelmiceli/challenge-cms.git
+cd challenge-cms
 ```
 
 ## 2. Instalar dependencias de PHP
