@@ -101,3 +101,13 @@ Por defecto, la aplicación estará disponible en:
 ```text
 http://localhost:8000
 ```
+
+## 10. Coleccion Postman
+```text
+/docs/challenge-cms.postman_collection.json
+```
+
+## 11. diagrama DER
+```text
+/docs/DER.png
+```
