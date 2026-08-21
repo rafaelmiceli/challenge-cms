@@ -14,6 +14,9 @@ class CategoriaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+        ];
     }
 }

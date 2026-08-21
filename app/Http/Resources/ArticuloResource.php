@@ -14,7 +14,8 @@ class ArticuloResource extends JsonResource
             'titulo' => $this->titulo,
             'contenido' => $this->contenido,
             'slug' => $this->slug,
-            'estado' => $this->estado
+            'estado' => $this->estado,
+            'categorias' => $this->categorias
         ];
     }
 }
