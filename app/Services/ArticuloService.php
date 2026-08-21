@@ -32,12 +32,15 @@ class ArticuloService
     public function create(array $data): Articulo
     {
         // Aquí puede ir lógica de negocio.
-
+        $data['user_id'] = auth()->id();
+        
         return $this->repository->create($data);
     }
 
     public function update(int $id, array $data): Articulo
     {
+        $data['user_id'] = auth()->id();
+        
         return $this->repository->update($id, $data);
     }
 
