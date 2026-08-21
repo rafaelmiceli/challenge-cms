@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\EstadoArticulo;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreArticuloRequest extends FormRequest
@@ -25,22 +27,16 @@ class StoreArticuloRequest extends FormRequest
                 'string',
             ],
 
-            'precio' => [
+            'fecha_publicacion' => [
                 'required',
-                'numeric',
-                'min:0',
+                'date',
+                'date_format:Y-m-d'
             ],
 
-            'stock' => [
+            'estado' => [
                 'required',
-                'integer',
-                'min:0',
-            ],
-
-            'activo' => [
-                'sometimes',
-                'boolean',
-            ],
+                new Enum(EstadoArticulo::class)
+            ]
         ];
     }
 }
