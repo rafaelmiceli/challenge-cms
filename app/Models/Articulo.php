@@ -20,11 +20,6 @@ class Articulo extends Model
         'user_id'
     ];
 
-    protected $casts = [
-        'precio' => 'decimal:2',
-        'activo' => 'boolean',
-    ];
-
     protected function titulo(): Attribute
     {
         return Attribute::make(
