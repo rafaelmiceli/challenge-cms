@@ -36,7 +36,17 @@ class StoreArticuloRequest extends FormRequest
             'estado' => [
                 'required',
                 new Enum(EstadoArticulo::class)
-            ]
+            ],
+
+            'categoria' => [
+                'required',
+                'array'
+            ],
+            
+            'categoria.*' => [
+                'integer',
+                'exists:categorias,id'
+            ],
         ];
     }
 }

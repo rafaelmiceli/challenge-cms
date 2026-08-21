@@ -33,15 +33,28 @@ class ArticuloService
     {
         // Aquí puede ir lógica de negocio.
         $data['user_id'] = auth()->id();
+
+        $categorias = $data['categoria'] ?? [];
+        unset($data['categoria']);
+
+        $articulo = $this->repository->create($data);
+        $articulo->categorias()->sync($categorias);
         
-        return $this->repository->create($data);
+        return $articulo;
     }
 
     public function update(int $id, array $data): Articulo
     {
+        // Aquí puede ir lógica de negocio.
         $data['user_id'] = auth()->id();
+
+        $categorias = $data['categoria'] ?? [];
+        unset($data['categoria']);
+
+        $articulo = $this->repository->update($id, $data);
+        $articulo->categorias()->sync($categorias);
         
-        return $this->repository->update($id, $data);
+        return $articulo;
     }
 
     public function delete(int $id): bool
