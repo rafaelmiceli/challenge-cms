@@ -23,11 +23,10 @@ class Articulo extends Model
     protected function titulo(): Attribute
     {
         return Attribute::make(
-            set: function ($value) {
-                $this->attributes['slug'] = Str::slug($value);
-
-                return $value;
-            },
+            set: fn ($value) => [
+                'titulo' => $value,
+                'slug' => Str::slug($value),
+            ],
         );
     }
 
