@@ -22,7 +22,7 @@ return new class extends Migration
                 'publicado',
             ])->default('borrador');
 
-            $table->timestamp('fecha_publicacion')->nullable();
+            $table->date('fecha_publicacion');
 
             $table->foreignId('user_id')
                 ->constrained()
