@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\EstadoArticulo;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class UpdateArticuloRequest extends FormRequest
 {
@@ -15,7 +18,7 @@ class UpdateArticuloRequest extends FormRequest
     {
         return [
             'titulo' => [
-                'sometimes',
+                'required',
                 'string',
                 'max:255',
             ],
@@ -25,21 +28,25 @@ class UpdateArticuloRequest extends FormRequest
                 'string',
             ],
 
-            'precio' => [
-                'sometimes',
-                'numeric',
-                'min:0',
+            'fecha_publicacion' => [
+                'required',
+                'date',
+                'date_format:Y-m-d'
             ],
 
-            'stock' => [
-                'sometimes',
+            'estado' => [
+                'required',
+                new Enum(EstadoArticulo::class)
+            ],
+
+            'categoria' => [
+                'required',
+                'array'
+            ],
+            
+            'categoria.*' => [
                 'integer',
-                'min:0',
-            ],
-
-            'activo' => [
-                'sometimes',
-                'boolean',
+                'exists:categorias,id'
             ],
         ];
     }
