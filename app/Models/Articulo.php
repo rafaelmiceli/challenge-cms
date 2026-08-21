@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Str;
 
 class Articulo extends Model
 {
@@ -23,6 +24,17 @@ class Articulo extends Model
         'precio' => 'decimal:2',
         'activo' => 'boolean',
     ];
+
+    protected function titulo(): Attribute
+    {
+        return Attribute::make(
+            set: function ($value) {
+                $this->attributes['slug'] = Str::slug($value);
+
+                return $value;
+            },
+        );
+    }
 
     public function user(): BelongsTo
     {
