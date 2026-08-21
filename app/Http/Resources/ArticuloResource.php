@@ -13,11 +13,8 @@ class ArticuloResource extends JsonResource
             'id' => $this->id,
             'titulo' => $this->titulo,
             'contenido' => $this->contenido,
-            'precio' => $this->precio,
-            'stock' => $this->stock,
-            'activo' => $this->activo,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'slug' => $this->slug,
+            'estado' => $this->estado
         ];
     }
 }
