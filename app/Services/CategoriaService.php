@@ -33,7 +33,6 @@ class CategoriaService
 
     public function create(array $data): Categoria
     {
-        // Aquí puede ir lógica de negocio.
 
         return $this->repository->create($data);
     }

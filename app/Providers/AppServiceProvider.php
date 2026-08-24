@@ -5,8 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\ArticuloRepository;
 use App\Repositories\CategoriaRepository;
+use App\Repositories\UserRepository;
 use App\Repositories\Contracts\ArticuloRepositoryInterface;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CategoriaRepositoryInterface::class,
             CategoriaRepository::class
+        );
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class
         );
     }
 
