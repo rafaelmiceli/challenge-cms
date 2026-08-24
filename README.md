@@ -105,6 +105,7 @@ http://localhost:8000
 ## 10. Coleccion Postman
 ```text
 /docs/challenge-cms.postman_collection.json
+/docs/workspace.postman_globals.json
 ```
 
 ## 11. diagrama DER
