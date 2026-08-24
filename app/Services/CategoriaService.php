@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Exceptions\CategoryNotFoundException;
+use App\Exceptions\CategoryHasProductsException;
 use App\Models\Categoria;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -43,6 +45,17 @@ class CategoriaService
 
     public function delete(int $id): bool
     {
+        
+        $category = $this->repository->findById($id);
+
+        if (!$category) {
+            throw new CategoryNotFoundException($id);
+        }
+
+        if ($this->repository->hasProducts($id)) {
+            throw new CategoryHasProductsException($id);
+        }
+
         return $this->repository->delete($id);
     }
 }

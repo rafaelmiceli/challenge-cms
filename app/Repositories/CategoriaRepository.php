@@ -53,4 +53,11 @@ class CategoriaRepository implements CategoriaRepositoryInterface
 
         return (bool) $articulo->delete();
     }
+
+    public function hasProducts(int $id): bool
+    {
+        return $this->model::whereKey($id)
+            ->whereHas('articulos')
+            ->exists();
+    }
 }

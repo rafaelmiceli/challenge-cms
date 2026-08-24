@@ -19,4 +19,6 @@ interface CategoriaRepositoryInterface
     public function update(int $id, array $data): Categoria;
 
     public function delete(int $id): bool;
+    
+    public function hasProducts(int $id): bool;
 }

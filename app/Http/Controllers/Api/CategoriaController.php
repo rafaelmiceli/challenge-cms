@@ -80,7 +80,7 @@ class CategoriaController extends Controller
         $this->service->delete($id);
 
         return response()->json([
-            'message' => 'Artículo eliminado correctamente',
+            'message' => 'Categoria eliminada correctamente',
         ]);
     }
 }

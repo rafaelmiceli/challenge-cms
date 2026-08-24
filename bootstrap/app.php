@@ -15,8 +15,20 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->shouldRenderJsonWhen(
-            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
-        );
+    ->withExceptions(function (Exceptions $exceptions) {
+
+        $exceptions->render(function (Throwable $e, Request $request) {
+
+            if (!$request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'message' => 'An unexpected error occurred.',
+                'error' => [
+                    'code' => $e->getMessage(),
+                ],
+            ], 500);
+        });
+
     })->create();
