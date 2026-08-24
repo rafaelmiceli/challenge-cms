@@ -31,6 +31,7 @@ class User extends Authenticatable implements JWTSubject
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class,
         ];
     }
 
@@ -63,7 +64,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function isAdmin(): bool
-    {
+    { 
         return $this->role === UserRole::ADMIN;
     }
 }

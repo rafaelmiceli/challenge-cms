@@ -48,7 +48,10 @@ class UserRepository implements UserRepositoryInterface
 
     public function delete(int $id): bool
     {
-        return (bool) $this->model->delete();
+
+        $model = $this->model->findOrFail($id);
+
+        return (bool) $model->delete();
     }
 
     public function countAdmins(): int

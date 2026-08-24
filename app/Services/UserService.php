@@ -65,19 +65,13 @@ class UserService
     {
         $user = $this->find($id);
 
-        if ($user->isAdmin()) {
-            $adminCount = User::where('role', 'admin')->count();
-
-            if ($adminCount <= 1) {
-                throw new CannotDeleteLastAdminException();
-            }
+        if (
+            $user->isAdmin() &&
+            $this->repository->countAdmins() <= 1
+        ) {
+            throw new CannotDeleteLastAdminException();
         }
 
         return $this->repository->delete($id);
-    }
-    
-    public function countAdmins(): int
-    {
-        return User::where('role', 'admin')->count();
     }
 }

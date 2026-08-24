@@ -30,6 +30,6 @@ Route::prefix('v1')->group(function () {
         Route::apiResource(
             'usuario', 
             UserController::class
-        );
+        )->middleware('admin');
     });
 });
